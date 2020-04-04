@@ -79,7 +79,7 @@ public class Controller implements Initializable {
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent event) {
-                    System.out.println("bye");
+                    System.out.println("bue");
                     if (socket != null && !socket.isClosed()) {
                         try {
                             out.writeUTF("/end");
@@ -234,6 +234,6 @@ public class Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("сообщение с просьбой регистрации ушло");
+        System.out.println("сообщение с просьбой регистрации ушла");
     }
 }

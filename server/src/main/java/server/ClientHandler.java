@@ -4,7 +4,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.sql.SQLException;
 
 public class ClientHandler {
 
@@ -12,8 +11,6 @@ public class ClientHandler {
     private DataInputStream in;
     private DataOutputStream out;
     private Server server;
-    private SimpleAuthService SAS;
-
 
     private String nick;
     private String login;
@@ -53,13 +50,8 @@ public class ClientHandler {
                         }
                         if (str.startsWith("/auth ")) {
                             String[] token = str.split(" ");
-                            String newNick = null;
-                            try {
-                                newNick = server.getAuthService()
-                                        .getNicknameByLoginAndPassword(token[1], token[2]);
-                            } catch (SQLException e) {
-                                e.printStackTrace();
-                            }
+                            String newNick = server.getAuthService()
+                                    .getNicknameByLoginAndPassword(token[1], token[2]);
 
                             login = token[1];
 
@@ -83,11 +75,6 @@ public class ClientHandler {
                     //цикл работы
                     while (true) {
                         String str = in.readUTF();
-                        if(str.startsWith("/rename")){
-                            String [] token = str.split(" ");
-                            SAS.rename(login,token[1]);
-                            server.broadcastClientList();
-                        }
 
                         if (str.startsWith("/")) {
                             if (str.equals("/end")) {
@@ -141,5 +128,4 @@ public class ClientHandler {
     public String getLogin() {
         return login;
     }
-
 }
