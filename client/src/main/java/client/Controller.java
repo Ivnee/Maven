@@ -52,9 +52,12 @@ public class Controller implements Initializable {
     private final String CHAT_TITLE_EMPTY = "Chat 2020";
 
     private boolean authenticated;
+
+
     private String nickname;
 
     private Stage regStage;
+    private History history;
 
     public void setAuthenticated(boolean authenticated) {
         this.authenticated = authenticated;
@@ -79,7 +82,7 @@ public class Controller implements Initializable {
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent event) {
-                    System.out.println("bue");
+                    System.out.println("bye");
                     if (socket != null && !socket.isClosed()) {
                         try {
                             out.writeUTF("/end");
@@ -110,6 +113,10 @@ public class Controller implements Initializable {
 //                            "/authok nick1"
                             nickname = str.split(" ")[1];
                             setAuthenticated(true);
+                            history = new History(this.nickname);
+                            if(history.isCreate(this)){
+                                history.read(this);
+                            }
                             break;
                         }
                         textArea.appendText(str + "\n");
@@ -140,6 +147,7 @@ public class Controller implements Initializable {
                             }
 
                         } else {
+                            history.add(str);
                             textArea.appendText(str + "\n");
                         }
                     }
@@ -240,5 +248,12 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
         System.out.println("сообщение с просьбой регистрации ушла");
+    }
+    public void addHistory(String text){
+        textArea.appendText(text);
+    }
+
+    public String getNickname() {
+        return nickname;
     }
 }
