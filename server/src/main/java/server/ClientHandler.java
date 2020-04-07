@@ -15,7 +15,6 @@ public class ClientHandler {
 
     private String nick;
     private String login;
-
     public ClientHandler(Socket socket, Server server) {
         try {
             this.socket = socket;
