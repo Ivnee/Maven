@@ -5,6 +5,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class ClientHandler {
 
@@ -23,8 +27,10 @@ public class ClientHandler {
             this.server = server;
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
+            ExecutorService es = Executors.newCachedThreadPool();//видимо нет смысла реализовывать ExecutorService,потому как для каждого клиента создается свой клиентхендлер
+                                                                 //и свой поток. Если б все сидели с одного клиентхендлера, с одного логина, то был бы смысл, думаю)
 
-            new Thread(() -> {
+            es.execute(() -> {
                 try {
                     socket.setSoTimeout(120000);
 
@@ -119,6 +125,7 @@ public class ClientHandler {
                     e.printStackTrace();
                 } finally {
                     server.unsubscribe(this);
+                    es.shutdown();
                     System.out.println("Клиент отключился");
                     try {
                         socket.close();
@@ -126,7 +133,7 @@ public class ClientHandler {
                         e.printStackTrace();
                     }
                 }
-            }).start();
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
