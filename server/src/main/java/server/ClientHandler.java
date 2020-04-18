@@ -1,12 +1,15 @@
 package server;
 
+import jdk.internal.instrumentation.Logger;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.util.logging.Level;
 
-public class ClientHandler {
+public class ClientHandler implements MainLogger{
 
     private Socket socket;
     private DataInputStream in;
@@ -16,7 +19,7 @@ public class ClientHandler {
     private String nick;
     private String login;
 
-    public ClientHandler(Socket socket, Server server) {
+    public ClientHandler(Socket socket, Server server){
         try {
             this.socket = socket;
             System.out.println("RemoteSocketAddress:  " + socket.getRemoteSocketAddress());
@@ -38,14 +41,17 @@ public class ClientHandler {
                                     .getAuthService()
                                     .registration(token[1], token[2], token[3]);
                             if (b) {
+                                logger.log(Level.INFO,"Регистрация прошла успешно");
                                 sendMsg("Регистрация прошла успешно");
                             } else {
+                                logger.log(Level.INFO,"Пользователь ввел используемый ник");
                                 sendMsg("Логин или ник уже занят");
                             }
                         }
 
 
                         if (str.equals("/end")) {
+                            logger.log(Level.INFO,"Клиент отключился");
                             throw new RuntimeException("Клиент отключился крестиком");
 
                         }
@@ -77,8 +83,8 @@ public class ClientHandler {
                     //цикл работы
                     while (true) {
                         String str = in.readUTF();
-
                         if (str.startsWith("/")) {
+                            logger.log(Level.SEVERE,"Системное сообщение: " + str);
                             if (str.equals("/end")) {
                                 out.writeUTF("/end");
                                 break;
@@ -108,11 +114,13 @@ public class ClientHandler {
                             }
 
                         } else {
+                            logger.log(Level.INFO,this.nick +" отправил сообщение: " + str);
                             server.broadcastMsg(nick, str);
                         }
                     }
                 } catch (SocketTimeoutException e) {
                     System.out.println("Клиент отключился по таймауту");
+                    logger.log(Level.INFO,"Время подключения вышло");
                 } catch (RuntimeException e) {
                     System.out.println(e.getMessage());
                 } catch (IOException e) {
@@ -120,6 +128,7 @@ public class ClientHandler {
                 } finally {
                     server.unsubscribe(this);
                     System.out.println("Клиент отключился");
+                    logger.log(Level.SEVERE,"Клиент отключился ");
                     try {
                         socket.close();
                     } catch (IOException e) {
