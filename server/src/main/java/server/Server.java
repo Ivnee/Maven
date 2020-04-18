@@ -55,21 +55,7 @@ public class Server implements MainLogger {
             }
         }
     }
-    public void initLogger(){
-        Handler handler = new ConsoleHandler();
-        Handler handlerSysMsg = new ConsoleHandler();
-        logger.addHandler(handler);
-        logger.addHandler(handlerSysMsg);
-        logger.setLevel(Level.INFO);
-        handler.setLevel(Level.INFO);
-        handlerSysMsg.setLevel(Level.SEVERE);
-        handlerSysMsg.setFilter(new Filter() {
-            @Override
-            public boolean isLoggable(LogRecord record) {
-                return record.getMessage().startsWith("/");
-            }
-        });
-    }
+
 
     public void broadcastMsg(String nick, String msg) {
         for (ClientHandler c : clients) {
