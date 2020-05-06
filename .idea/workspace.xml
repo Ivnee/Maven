@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d692582c-f02e-455a-bc6e-64af0ae8997b" name="Default Changelist" comment="" />
+    <list default="true" id="d692582c-f02e-455a-bc6e-64af0ae8997b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/History.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/client/History.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/client/History.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/history nick1" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +30,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1aD9zu8cAoarl7PAe3FW2XuYUsu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -79,13 +85,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ints" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ints" />
+      <module name="client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Start" />
+      <item itemvalue="Application.ints" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.ints" />
         <item itemvalue="Application.Start" />
       </list>
     </recent_temporary>
@@ -120,22 +135,22 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="574" y="136" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1586289830769" />
-    <state width="1493" height="131" key="GridCell.Tab.0.bottom" timestamp="1586290472508">
+    <state width="1493" height="131" key="GridCell.Tab.0.bottom" timestamp="1586344659179">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="131" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1586290472508" />
-    <state width="1493" height="131" key="GridCell.Tab.0.center" timestamp="1586290472507">
+    <state width="1493" height="131" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1586344659179" />
+    <state width="1493" height="131" key="GridCell.Tab.0.center" timestamp="1586344659179">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="131" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1586290472507" />
-    <state width="1493" height="131" key="GridCell.Tab.0.left" timestamp="1586290472507">
+    <state width="1493" height="131" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1586344659179" />
+    <state width="1493" height="131" key="GridCell.Tab.0.left" timestamp="1586344659179">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="131" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1586290472507" />
-    <state width="1493" height="131" key="GridCell.Tab.0.right" timestamp="1586290472507">
+    <state width="1493" height="131" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1586344659179" />
+    <state width="1493" height="131" key="GridCell.Tab.0.right" timestamp="1586344659179">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="131" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1586290472507" />
+    <state width="1493" height="131" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1586344659179" />
     <state x="477" y="245" key="com.intellij.ide.util.TipDialog" timestamp="1586259569373">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

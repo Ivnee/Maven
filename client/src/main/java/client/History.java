@@ -26,15 +26,22 @@ public class History implements Serializable {
         BufferedReader br = new BufferedReader(fr);
         String x = "";
         int lines = 0;
-       // Queue<String> queue = new LinkedList<>();
+       Queue<String> queue = new LinkedList<>();
         while((x = br.readLine()) != null){
-            if(lines < 100) {
-                //queue.offer(x);
-                controller.addHistory( x+ "\n");
+                queue.offer(x);
                 lines++;
-            }/*else{
+        }
+        if(lines > 100){
+            for (int i = 0; i <lines-100 ; i++) {
                 queue.poll();
-            }*/
+            }
+            for (int i = 0; i <100 ; i++) {
+                controller.addHistory( queue.poll() + "\n");
+            }
+        }else{
+            for (int i = 0; i <lines ; i++) {
+                controller.addHistory(queue.poll() + "\n");
+            }
         }
         fr.close();
         br.close();
